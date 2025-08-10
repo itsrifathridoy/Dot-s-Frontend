@@ -1,0 +1,6 @@
+1. Per collaction page
+2. Per catagories per product:
+    a. Fix routing
+3. Indi. Product: 
+    a. Fix routing 
+4. Search page

@@ -94,7 +94,7 @@ const ShoppingCartPage: React.FC = () => {
                 <div key={item.id} className="flex flex-col sm:flex-row gap-4 pb-4 sm:pb-6 border-b border-gray-200 last:border-b-0">
                   {/* Product Image and Info */}
                   <div className="flex gap-3 sm:gap-4 flex-1 min-w-0">
-                    <Link href={`/IndividualProduct/${item.id}`} className="flex-shrink-0">
+                    <Link href={`/products/${item.slug || item.id}`} className="flex-shrink-0">
                       <img 
                         src={item.imageUrl} 
                         alt={item.name} 

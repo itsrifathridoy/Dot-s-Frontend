@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useCart } from "../context/CartContext";
 
 interface Product {
+  id?: number;
+  slug: string;
   image: string;
   images?: string[]; 
   title: string;
@@ -12,7 +14,6 @@ interface Product {
   reviews: number;
   price: string;
   catagory?: string;
-  id?: number;
 }
 
 const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
@@ -60,7 +61,8 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
       name: product.title,
       price: priceNumber,
       imageUrl: product.image.startsWith('/') ? product.image : `/${product.image}`,
-      color: "Off white"
+      color: "Off white",
+      slug: product.slug
     });
   };
 
@@ -89,12 +91,7 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
 
       {/* Product Image */}
       <Link
-        href={{
-          pathname: '/IndividualProduct',
-          query: {
-            id: product.id?.toString() || '1',
-          },
-        }}
+        href={`/products/${product.slug}`}
         className="block mb-5 overflow-hidden rounded-xl bg-gray-50 relative"
       >
         {/* Main Image */}

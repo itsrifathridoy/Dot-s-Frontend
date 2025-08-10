@@ -1,5 +1,6 @@
 export interface Product {
   id: number;
+  slug: string;
   image: string;
   title: string;
   description: string;
@@ -11,6 +12,7 @@ export interface Product {
 export const products: Product[] = [
   {
     id: 1,
+    slug: "alder-ridge-table",
     image: "/Images/DotsSofa1.jpeg",
     title: "Alder Ridge Table",
     description: "Add a touch of satisfaction with Alder ridge Table",
@@ -20,6 +22,7 @@ export const products: Product[] = [
   },
   {
     id: 2,
+    slug: "elegant-sofa-set",
     image: "/Images/DotsSofa.jpeg",
     title: "Elegant Sofa Set",
     description: "Luxurious comfort for modern living rooms",
@@ -29,6 +32,7 @@ export const products: Product[] = [
   },
   {
     id: 3,
+    slug: "wooden-coffee-table",
     image: "/Images/DotsSofa2.jpeg",
     title: "Wooden Coffee Table",
     description: "A minimal wooden table for your living room",
@@ -38,6 +42,7 @@ export const products: Product[] = [
   },
   {
     id: 4,
+    slug: "modern-recliner",
     image: "/Images/DotsSofa3.jpeg",
     title: "Modern Recliner",
     description: "Comfortable recliner with adjustable support",
@@ -47,6 +52,7 @@ export const products: Product[] = [
   },
   {
     id: 5,
+    slug: "premium-comfort-sofa",
     image: "/Images/DotsSofa-3.jpeg",
     title: "Premium Comfort Sofa",
     description: "Luxurious seating experience for your home",
@@ -56,6 +62,7 @@ export const products: Product[] = [
   },
   {
     id: 6,
+    slug: "designer-lounge-chair",
     image: "/Images/DotsSofa-4.jpeg",
     title: "Designer Lounge Chair",
     description: "Ergonomic design meets contemporary style",
@@ -65,6 +72,7 @@ export const products: Product[] = [
   },
   {
     id: 7,
+    slug: "stylish-sectional",
     image: "/Images/Dots_Sofa-5.jpeg",
     title: "Stylish Sectional",
     description: "Perfect for large families and entertaining",
@@ -74,6 +82,7 @@ export const products: Product[] = [
   },
   {
     id: 8,
+    slug: "coffee-table-set",
     image: "/Images/DotsSofaCoffee-1.jpeg",
     title: "Coffee Table Set",
     description: "Complete your living room with this elegant set",
@@ -83,6 +92,7 @@ export const products: Product[] = [
   },
   {
     id: 9,
+    slug: "luxury-armchair",
     image: "/Images/DotsSofa7.jpeg",
     title: "Luxury Armchair",
     description: "Handcrafted with premium materials",
@@ -92,6 +102,7 @@ export const products: Product[] = [
   },
   {
     id: 10,
+    slug: "contemporary-sofa",
     image: "/Images/DotsSofa8.jpeg",
     title: "Contemporary Sofa",
     description: "Modern design for sophisticated spaces",
@@ -101,6 +112,7 @@ export const products: Product[] = [
   },
   {
     id: 11,
+    slug: "comfort-living-set",
     image: "/Images/DotsSofa9.jpeg",
     title: "Comfort Living Set",
     description: "Complete comfort package for your home",
@@ -110,6 +122,7 @@ export const products: Product[] = [
   },
   {
     id: 12,
+    slug: "classic-sofa",
     image: "/Images/DotsSofa10.jpeg",
     title: "Classic Sofa",
     description: "Timeless design with modern comfort",
@@ -119,6 +132,7 @@ export const products: Product[] = [
   },
   {
     id: 13,
+    slug: "minimalist-chair",
     image: "/Images/DotsSofa11.jpeg",
     title: "Minimalist Chair",
     description: "Clean lines and simple elegance",
@@ -128,6 +142,7 @@ export const products: Product[] = [
   },
   {
     id: 14,
+    slug: "vintage-ottoman",
     image: "/Images/DotsSofa12.jpeg",
     title: "Vintage Ottoman",
     description: "Add character to your space",
@@ -137,6 +152,7 @@ export const products: Product[] = [
   },
   {
     id: 15,
+    slug: "scandinavian-sofa",
     image: "/Images/DotsSofa13.jpeg",
     title: "Scandinavian Sofa",
     description: "Nordic design meets comfort",
@@ -146,6 +162,7 @@ export const products: Product[] = [
   },
   {
     id: 16,
+    slug: "executive-chair",
     image: "/Images/DotsSofa14.jpeg",
     title: "Executive Chair",
     description: "Professional comfort for your office",
@@ -155,6 +172,7 @@ export const products: Product[] = [
   },
   {
     id: 17,
+    slug: "accent-chair",
     image: "/Images/DotsSofa15.jpeg",
     title: "Accent Chair",
     description: "Bold statement piece for any room",
@@ -164,6 +182,7 @@ export const products: Product[] = [
   },
   {
     id: 18,
+    slug: "luxury-sectional",
     image: "/Images/DotsSofa16.jpeg",
     title: "Luxury Sectional",
     description: "Premium seating for the whole family",
@@ -173,6 +192,7 @@ export const products: Product[] = [
   },
   {
     id: 19,
+    slug: "comfort-recliner",
     image: "/Images/DotsSofa17.jpeg",
     title: "Comfort Recliner",
     description: "Ultimate relaxation chair",
@@ -182,6 +202,7 @@ export const products: Product[] = [
   },
   {
     id: 20,
+    slug: "modern-loveseat",
     image: "/Images/DotsSofa18.jpeg",
     title: "Modern Loveseat",
     description: "Perfect for small spaces",
@@ -191,6 +212,7 @@ export const products: Product[] = [
   },
   {
     id: 21,
+    slug: "designer-sofa",
     image: "/Images/DotsSofa19.jpg",
     title: "Designer Sofa",
     description: "Artistic design meets comfort",
@@ -200,6 +222,7 @@ export const products: Product[] = [
   },
   {
     id: 22,
+    slug: "classic-divan",
     image: "/Images/Devan-1.jpeg",
     title: "Classic Divan",
     description: "Traditional comfort with modern style",
@@ -209,6 +232,7 @@ export const products: Product[] = [
   },
   {
     id: 23,
+    slug: "storage-divan",
     image: "/Images/Devan-2.jpeg",
     title: "Storage Divan",
     description: "Smart storage solution for bedrooms",
@@ -218,6 +242,7 @@ export const products: Product[] = [
   },
   {
     id: 24,
+    slug: "premium-divan",
     image: "/Images/Devan-3.jpeg",
     title: "Premium Divan",
     description: "Luxury comfort for your bedroom",
@@ -227,6 +252,7 @@ export const products: Product[] = [
   },
   {
     id: 25,
+    slug: "budget-divan",
     image: "/Images/Devan-5.jpeg",
     title: "Budget Divan",
     description: "Affordable comfort without compromise",
@@ -236,6 +262,7 @@ export const products: Product[] = [
   },
   {
     id: 26,
+    slug: "king-size-bed",
     image: "/Images/Bed-1.jpeg",
     title: "King Size Bed",
     description: "Spacious comfort for the master bedroom",
@@ -245,6 +272,7 @@ export const products: Product[] = [
   },
   {
     id: 27,
+    slug: "queen-bed-frame",
     image: "/Images/Bed-2.jpeg",
     title: "Queen Bed Frame",
     description: "Elegant design for modern bedrooms",
@@ -254,6 +282,7 @@ export const products: Product[] = [
   },
   {
     id: 28,
+    slug: "platform-bed",
     image: "/Images/Bed-3.jpeg",
     title: "Platform Bed",
     description: "Minimalist design with maximum comfort",
@@ -263,6 +292,7 @@ export const products: Product[] = [
   },
   {
     id: 29,
+    slug: "storage-bed",
     image: "/Images/Bed-4.jpeg",
     title: "Storage Bed",
     description: "Smart storage integrated bed frame",
@@ -272,6 +302,7 @@ export const products: Product[] = [
   },
   {
     id: 30,
+    slug: "single-bed",
     image: "/Images/Bed-5.jpeg",
     title: "Single Bed",
     description: "Perfect for kids and guest rooms",
@@ -284,6 +315,11 @@ export const products: Product[] = [
 // Helper function to get product by ID
 export const getProductById = (id: number): Product | undefined => {
   return products.find(product => product.id === id);
+};
+
+// Helper function to get product by slug
+export const getProductBySlug = (slug: string): Product | undefined => {
+  return products.find(product => product.slug === slug);
 };
 
 // Helper function to get products by category

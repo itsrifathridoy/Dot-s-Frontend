@@ -116,7 +116,7 @@ const CartItems: React.FC<CartProps> = ({ isOpen, onClose, onNavigate }) => {
                   >
                     {/* Product Image */}
                     <Link
-                      href={`/IndividualProduct?id=${item.id}`}
+                      href={`/products/${item.slug || item.id}`}
                       onClick={onClose}
                       className="flex-shrink-0"
                     >
@@ -132,7 +132,7 @@ const CartItems: React.FC<CartProps> = ({ isOpen, onClose, onNavigate }) => {
 
                     {/* Product Info */}
                     <div className="flex-1 min-w-0">
-                      <Link href={`/IndividualProduct?id=${item.id}`} onClick={onClose}>
+                      <Link href={`/products/${item.slug || item.id}`} onClick={onClose}>
                         <h3 className="font-semibold text-gray-900 text-base line-clamp-2 hover:text-[#7A1315] transition-colors group-hover:text-[#7A1315]">
                           {item.name}
                         </h3>

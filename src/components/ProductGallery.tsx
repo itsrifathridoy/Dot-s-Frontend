@@ -68,7 +68,8 @@ export default function ProductGallery({ productData }: { productData: any }) {
         name: productData?.title || 'Alder Ridge Table',
         price: priceNumber,
         imageUrl: mainImage,
-        color: selectedColor
+        color: selectedColor,
+        slug: productData?.slug
       });
     }
     
