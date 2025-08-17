@@ -1,6 +1,6 @@
-1. Per collaction page
-2. Per catagories per product:
-    a. Fix routing
+1. Per collection page ✅ (Added dynamic collection pages)
+2. Per categories per product:
+    a. Fix routing ✅ (Added dynamic routes for collections)
 3. Indi. Product: 
-    a. Fix routing 
-4. Search page
+    a. Fix routing ✅ (Already working)
+4. Search page ✅ (Already working)

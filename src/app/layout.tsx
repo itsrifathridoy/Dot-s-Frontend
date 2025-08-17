@@ -1,18 +1,18 @@
 "use client";
 import React, { useEffect, useState } from 'react';
 import './globals.css';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import PageTransitionWrapper from '../components/PageTransitionWrapper';
-import PopupAd from '../components/PopupAd';
-import PopupTestButton from '../components/PopupTestButton';
+import Navbar from '../components/navbar';
+import Footer from '../components/footer';
+import PageTransitionWrapper from '../components/pagetransitionwrapper';
+import PopupAd from '../components/popupad';
+import PopupTestButton from '../components/popuptestbutton';
 import { usePathname } from 'next/navigation';
 import { CartProvider } from '../context/CartContext';
 import { RecentlyViewedProvider } from '../context/RecentlyViewedContext';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const isAuthPage = pathname === '/SignIn' || pathname === '/register';
+  const isAuthPage = pathname === '/signin' || pathname === '/register';
   const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {

@@ -1,15 +1,16 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-interface UserSidebarProps {
+interface UserDropdownProps {
   activeSection: "profile" | "orders" | "address" | "password";
 }
 
-const UserSidebar: React.FC<UserSidebarProps> = ({ activeSection }) => {
+const UserDropdown: React.FC<UserDropdownProps> = ({ activeSection }) => {
   const router = useRouter();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const getGreeting = () => {
     const hour = new Date().getHours();
@@ -30,72 +31,88 @@ const UserSidebar: React.FC<UserSidebarProps> = ({ activeSection }) => {
     if (item.key === "logout") {
       // Handle logout logic here
       console.log("Logout clicked");
+      setIsDropdownOpen(false);
       return;
     }
     router.push(item.href);
-    setIsMobileMenuOpen(false); // Close mobile menu after navigation
+    setIsDropdownOpen(false);
   };
 
+  const getActiveItemName = () => {
+    const activeItem = navigationItems.find(item => item.key === activeSection);
+    return activeItem?.name || "Profile";
+  };
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   return (
-    <>
-      {/* Mobile Menu Button */}
+    <div className="relative" ref={dropdownRef}>
+      {/* Dropdown Trigger */}
       <button
-        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        className="lg:hidden fixed top-4 left-4 z-50 bg-white p-2 rounded-lg shadow-md"
+        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+        className="flex items-center gap-3 px-4 py-3 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-50 transition-colors min-w-[200px]"
       >
-        <span className="text-xl">☰</span>
+        <div className="flex items-center gap-3 flex-1">
+          <div className="w-8 h-8 bg-gray-900 text-white rounded-full flex items-center justify-center text-sm font-semibold">
+            GG
+          </div>
+          <div className="text-left">
+            <div className="text-xs text-gray-500">{getGreeting()}</div>
+            <div className="text-sm font-medium text-gray-900 truncate">George Gika</div>
+          </div>
+        </div>
+        <svg
+          className={`w-4 h-4 text-gray-400 transition-transform duration-200 ${
+            isDropdownOpen ? 'rotate-180' : ''
+          }`}
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
       </button>
 
-      {/* Mobile Overlay */}
-      {isMobileMenuOpen && (
-        <div
-          className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-40"
-          onClick={() => setIsMobileMenuOpen(false)}
-        />
-      )}
-
-      {/* Sidebar */}
-      <div className={`
-        w-full sm:w-80 bg-white rounded-lg shadow-sm p-4 sm:p-6 h-fit
-        fixed lg:static top-0 left-0 z-50 lg:z-auto
-        transform transition-transform duration-300 ease-in-out
-        ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
-        max-h-screen overflow-y-auto lg:max-h-none
-      `}>
-        {/* Close button for mobile */}
-        <button
-          onClick={() => setIsMobileMenuOpen(false)}
-          className="lg:hidden absolute top-4 right-4 text-gray-500 text-xl"
-        >
-          ✕
-        </button>
-
-        <div className="mb-6 pt-8 lg:pt-0">
-          <h2 className="text-sm text-gray-500 mb-2">{getGreeting()}</h2>
-          <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 break-words">George Gika</h1>
+      {/* Dropdown Menu */}
+      {isDropdownOpen && (
+        <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-lg z-50 overflow-hidden">
+          <div className="py-2">
+            {navigationItems.map((item) => (
+              <button
+                key={item.key}
+                onClick={() => handleNavigation(item)}
+                className={`w-full flex items-center gap-3 px-4 py-3 text-left transition-colors hover:bg-gray-50 ${
+                  activeSection === item.key
+                    ? "bg-gray-100 text-gray-900 border-r-2 border-gray-900"
+                    : item.danger
+                    ? "text-red-500 hover:bg-red-50"
+                    : "text-gray-600"
+                }`}
+              >
+                <span className="text-lg flex-shrink-0">{item.icon}</span>
+                <span className="text-sm font-medium">{item.name}</span>
+                {activeSection === item.key && (
+                  <span className="ml-auto text-xs text-gray-500">Current</span>
+                )}
+              </button>
+            ))}
+          </div>
         </div>
-
-        <nav className="space-y-2">
-          {navigationItems.map((item) => (
-            <button
-              key={item.key}
-              onClick={() => handleNavigation(item)}
-              className={`w-full flex items-center gap-3 px-3 sm:px-4 py-3 rounded-lg text-left transition-colors text-sm sm:text-base ${
-                activeSection === item.key
-                  ? "bg-gray-900 text-white"
-                  : item.danger
-                  ? "text-red-500 hover:bg-red-50"
-                  : "text-gray-600 hover:bg-gray-50"
-              }`}
-            >
-              <span className="text-base sm:text-lg flex-shrink-0">{item.icon}</span>
-              <span className="truncate">{item.name}</span>
-            </button>
-          ))}
-        </nav>
-      </div>
-    </>
+      )}
+    </div>
   );
 };
 
-export default UserSidebar;
+export default UserDropdown;

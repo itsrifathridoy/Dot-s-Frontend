@@ -57,11 +57,19 @@ const ProductsDropdown = ({ isOpen }: ProductsDropdownProps) => {
       }}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4 sm:py-6">
+        <h3 className="font-semibold text-[#861718] mb-4 text-lg">
+          <Link href="/products" className="hover:text-[#a11618] transition-colors flex items-center gap-2 group">
+            Products
+            <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </Link>
+        </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
           {productsData.map((category, index) => (
             <div key={category.name} className="mb-4">
               <Link
-                href={`/products/${category.name.toLowerCase().replace(' ', '-')}`}
+                href={`/products?category=${category.name.toLowerCase().replace(' ', '-')}`}
                 className="font-medium text-gray-800 hover:text-[#861718] transition flex items-center gap-1 mb-2"
               >
                 {category.name}
@@ -73,7 +81,7 @@ const ProductsDropdown = ({ isOpen }: ProductsDropdownProps) => {
                 {category.items.slice(0, 6).map((item) => (
                   <li key={item}>
                     <Link
-                      href={`/products/${category.name.toLowerCase().replace(' ', '-')}/${item.toLowerCase().replace(' ', '-')}`}
+                      href={`/products?category=${category.name.toLowerCase().replace(' ', '-')}&subcategory=${item.toLowerCase().replace(' ', '-')}`}
                       className="text-sm text-gray-600 hover:text-[#861718] transition block"
                     >
                       {item}
@@ -83,7 +91,7 @@ const ProductsDropdown = ({ isOpen }: ProductsDropdownProps) => {
                 {category.items.length > 6 && (
                   <li>
                     <Link
-                      href={`/products/${category.name.toLowerCase().replace(' ', '-')}`}
+                      href={`/products?category=${category.name.toLowerCase().replace(' ', '-')}`}
                       className="text-[#861718] hover:underline text-sm font-medium"
                     >
                       View All ({category.items.length})

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import ProductCard from "./ProductCard";
+import ProductCard from "./productcard";
 import { products, type Product } from "../data/products";
 
 interface ProductListProps {

@@ -1,4 +1,3 @@
-
 'use client';
 
 import Image from 'next/image';
@@ -8,11 +7,11 @@ import { useState, useEffect, useRef } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { IoSearchOutline, IoCartOutline, IoPersonOutline } from 'react-icons/io5';
 import { MdOutlineTrackChanges, MdHistory } from 'react-icons/md';
-import CartItems from './cartItems';
-import CollectionsDropdown from './CollectionsDropdown';
-import ProductsDropdown from './ProductsDropdown';
-import SearchModal from './SearchModal';
-import RecentlyViewedModal from './RecentlyViewedModal';
+import CartItems from './cartitems';
+import CollectionsDropdown from './collectionsdropdown';
+import ProductsDropdown from './productsdropdown';
+import SearchModal from './searchmodal';
+import RecentlyViewedModal from './recentlyviewedmodal';
 import { useCart } from '../context/CartContext';
 import { useRecentlyViewed } from '../context/RecentlyViewedContext';
 import { collectionsData, productsData } from '../data/collectionsCategories';
@@ -64,8 +63,8 @@ const Navbar = () => {
   }, []);
 
   const navItems = [
-    { name: 'Collections', href: '/CollectionsPage', hasDropdown: true, dropdownType: 'collections' },
-    { name: 'Products', href: '/Products', hasDropdown: true, dropdownType: 'products' },
+    { name: 'Collections', href: '/collectionspage', hasDropdown: true, dropdownType: 'collections' },
+    { name: 'Products', href: '/products', hasDropdown: true, dropdownType: 'products' },
     { name: 'Store', href: '/store' },
     { name: 'Orders', href: '/orders' },
     { name: 'More', href: '/more' },
@@ -292,7 +291,7 @@ const Navbar = () => {
               </div>
 
               {/* Profile Icon */}
-              <Link href="/SignIn" className="relative group h-full flex items-center cursor-pointer hover:bg-gray-50 px-2 transition-all duration-200">
+              <Link href="/signin" className="relative group h-full flex items-center cursor-pointer hover:bg-gray-50 px-2 transition-all duration-200">
                 <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-[#7A1315] to-[#a11618] opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
                 <div className="flex items-center justify-center text-gray-600 group-hover:text-black transition-colors h-10 w-10">
                   <IoPersonOutline className="w-5 h-5" />

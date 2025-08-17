@@ -163,7 +163,7 @@ const ShoppingCartPage: React.FC = () => {
                 <h3 className="text-lg font-medium text-black mb-2">Your cart is empty</h3>
                 <p className="text-black mb-6">Add some items to get started</p>
                 <Link 
-                  href='/Products' 
+                  href='/products' 
                   className="inline-flex items-center px-6 py-3 bg-red-600 text-white font-medium rounded-lg hover:bg-red-700 transition-colors"
                 >
                   Continue Shopping
@@ -174,7 +174,7 @@ const ShoppingCartPage: React.FC = () => {
             {cartItems.length > 0 && (
               <div className="mt-6 pt-6 border-t border-gray-200">
                 <Link 
-                  href='/Products' 
+                  href='/products' 
                   className="inline-flex items-center text-red-600 hover:text-red-700 font-medium text-sm"
                 >
                   <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

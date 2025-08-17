@@ -2,12 +2,13 @@
 
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
-import ProductList from '../../components/ProductList';
-import HomeCategories from '../../components/homecatagories';
-import ProductCategories from '../../components/productCatagories';
-import IndustrialCatagories from '../../components/industrialCatagories';
-import SaleSection from '../../components/SaleSection';
+import ProductList from '../../components/productlist';
+import HomeCategories from '../../components/homecategories';
+import ProductCategories from '../../components/productcategories';
+import IndustrialCategories from '../../components/industrialcategories';
+import SaleSection from '../../components/salesection';
 import Link from 'next/link';
+import IndustrialCatagories from '../../components/industrialcategories';
 
 const HomePage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -184,7 +185,7 @@ const HomePage = () => {
             <div className="w-16 sm:w-20 h-0.5 sm:h-1 bg-gradient-to-r from-[#7A1315] to-[#a11618] mt-1 sm:mt-2 rounded-full"></div>
           </div>
           <div className="flex justify-end flex-shrink-0">
-            <Link href="/CollectionsPage" className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 text-xs sm:text-sm lg:text-base font-semibold text-[#7A1315] border border-[#7A1315] rounded-full hover:bg-[#7A1315] hover:text-white hover:ring-2 hover:ring-[#7A1315] hover:ring-offset-2 focus:bg-[#7A1315] focus:text-white active:bg-[#5a0f11] active:border-[#5a0f11] active:scale-95 focus:outline-none transition-all duration-200 group touch-manipulation">
+            <Link href="/collectionspage" className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 text-xs sm:text-sm lg:text-base font-semibold text-[#7A1315] border border-[#7A1315] rounded-full hover:bg-[#7A1315] hover:text-white hover:ring-2 hover:ring-[#7A1315] hover:ring-offset-2 focus:bg-[#7A1315] focus:text-white active:bg-[#5a0f11] active:border-[#5a0f11] active:scale-95 focus:outline-none transition-all duration-200 group touch-manipulation">
               <span>Explore More</span>
               <svg className="w-3 h-3 sm:w-4 sm:h-4 transition-transform duration-300 group-hover:translate-x-1 group-active:translate-x-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
@@ -309,7 +310,7 @@ const HomePage = () => {
             <div className="w-16 sm:w-20 h-0.5 sm:h-1 bg-gradient-to-r from-[#7A1315] to-[#a11618] mt-1 sm:mt-2 rounded-full"></div>
           </div>
           <div className="flex justify-end flex-shrink-0">
-            <a href="/CollectionsPage" className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 text-xs sm:text-sm lg:text-base font-semibold text-[#7A1315] border border-[#7A1315] rounded-full hover:bg-[#7A1315] hover:text-white hover:ring-2 hover:ring-[#7A1315] hover:ring-offset-2 focus:bg-[#7A1315] focus:text-white active:bg-[#5a0f11] active:border-[#5a0f11] active:scale-95 focus:outline-none transition-all duration-200 group touch-manipulation">
+            <a href="/collectionspage" className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 text-xs sm:text-sm lg:text-base font-semibold text-[#7A1315] border border-[#7A1315] rounded-full hover:bg-[#7A1315] hover:text-white hover:ring-2 hover:ring-[#7A1315] hover:ring-offset-2 focus:bg-[#7A1315] focus:text-white active:bg-[#5a0f11] active:border-[#5a0f11] active:scale-95 focus:outline-none transition-all duration-200 group touch-manipulation">
               <span>Explore More</span>
               <svg className="w-3 h-3 sm:w-4 sm:h-4 transition-transform duration-300 group-hover:translate-x-1 group-active:translate-x-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
@@ -320,7 +321,7 @@ const HomePage = () => {
       
         {/* Grid Layout */}
         <div>
-          <IndustrialCatagories />
+          <IndustrialCatagories/>
         </div>
       </section>
       

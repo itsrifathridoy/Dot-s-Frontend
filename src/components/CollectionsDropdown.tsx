@@ -33,7 +33,7 @@ const CollectionsDropdown = ({ isOpen }: CollectionsDropdownProps) => {
           {/* Room Categories - Left Side */}
           <div className="h-full flex flex-col min-h-0">
             <h3 className="font-semibold text-[#861718] mb-4 text-lg flex-shrink-0">
-              <Link href="/collections" className="hover:text-[#a11618] transition-colors flex items-center gap-2 group">
+              <Link href="/collectionspage" className="hover:text-[#a11618] transition-colors flex items-center gap-2 group">
                 Collections
                 <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -82,7 +82,7 @@ const CollectionsDropdown = ({ isOpen }: CollectionsDropdownProps) => {
           <div className="col-span-3 h-full flex flex-col min-h-0">
             <h3 className="font-semibold text-[#861718] mb-4 text-lg flex-shrink-0">
               <Link 
-                href={`/collections/${selectedRoom.toLowerCase()}`}
+                href={`/collectionspage/${selectedRoom.toLowerCase()}`}
                 className="hover:text-[#a11618] transition-colors inline-flex items-center gap-2 group"
               >
                 {selectedRoom} Collection
@@ -97,7 +97,7 @@ const CollectionsDropdown = ({ isOpen }: CollectionsDropdownProps) => {
                   <div key={category.name} className="space-y-2">
                     <div className="font-medium text-black mb-2">
                       <Link
-                        href={`/collections/${selectedRoom.toLowerCase()}/${category.name.toLowerCase().replace(/\s+/g, '-')}`}
+                        href={`/collectionspage/${selectedRoom.toLowerCase()}?category=${category.name.toLowerCase().replace(/\s+/g, '-')}`}
                         className="hover:text-[#861718] transition inline-flex items-center gap-1 group"
                       >
                         {category.name}
@@ -111,7 +111,7 @@ const CollectionsDropdown = ({ isOpen }: CollectionsDropdownProps) => {
                         {category.subcategories.slice(0, 6).map((subcategory) => (
                           <li key={subcategory.name}>
                             <Link
-                              href={`/collections/${selectedRoom.toLowerCase()}/${category.name.toLowerCase().replace(/\s+/g, '-')}/${subcategory.name.toLowerCase().replace(/\s+/g, '-')}`}
+                              href={`/collectionspage/${selectedRoom.toLowerCase()}?category=${category.name.toLowerCase().replace(/\s+/g, '-')}&subcategory=${subcategory.name.toLowerCase().replace(/\s+/g, '-')}`}
                               className="hover:text-[#861718] transition inline-block"
                             >
                               {subcategory.name}
@@ -121,7 +121,7 @@ const CollectionsDropdown = ({ isOpen }: CollectionsDropdownProps) => {
                         {category.subcategories.length > 6 && (
                           <li>
                             <Link
-                              href={`/collections/${selectedRoom.toLowerCase()}/${category.name.toLowerCase().replace(/\s+/g, '-')}`}
+                              href={`/collectionspage/${selectedRoom.toLowerCase()}?category=${category.name.toLowerCase().replace(/\s+/g, '-')}`}
                               className="text-[#861718] hover:underline text-sm font-medium inline-block"
                             >
                               View All ({category.subcategories.length})

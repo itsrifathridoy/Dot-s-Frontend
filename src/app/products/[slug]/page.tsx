@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import ProductGallery from "../../../components/ProductGallery";
+import ProductGallery from "../../../components/productgallery";
 import { useRecentlyViewed } from "../../../context/RecentlyViewedContext";
 import { getProductBySlug, type Product } from "../../../data/products";
 import { motion } from "framer-motion";
@@ -164,3 +164,6 @@ const IndividualProduct = () => {
 };
 
 export default IndividualProduct;
+
+
+

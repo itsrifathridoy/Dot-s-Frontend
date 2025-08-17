@@ -9,7 +9,7 @@ const Register= () => {
                 <h2 className="text-xl sm:text-2xl font-bold mb-1 text-black">Create Account</h2>
                 <p className="mb-4 sm:mb-6 text-sm text-black">
                     or{" "}
-                    <a href="/SignIn" className="text-blue-600 hover:underline">
+                    <a href="/signin" className="text-blue-600 hover:underline">
                         sign in to your account
                     </a>
                 </p>

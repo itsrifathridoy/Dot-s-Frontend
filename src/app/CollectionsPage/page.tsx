@@ -1,8 +1,8 @@
 import React from 'react';
-import ProductList from '../../components/ProductList';
-import HomeCategories from '../../components/homecatagories';
-import IndustrialCatagories from '../../components/industrialCatagories';
-import ProductCatagories from '../../components/productCatagories';
+import ProductList from '../../components/productlist';
+import HomeCategories from '../../components/homecategories';
+import IndustrialCatagories from '../../components/industrialcategories';
+import ProductCatagories from '../../components/productcategories';
 
 const CollectionsPage = () => {
   return (

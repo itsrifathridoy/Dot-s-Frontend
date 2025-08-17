@@ -106,12 +106,11 @@ export const RecentlyViewedProvider: React.FC<{ children: ReactNode }> = ({ chil
   );
 };
 
+// Expose a hook for convenient consumption
 export const useRecentlyViewed = (): RecentlyViewedContextType => {
-  const context = useContext(RecentlyViewedContext);
-  if (context === undefined) {
+  const ctx = useContext(RecentlyViewedContext);
+  if (!ctx) {
     throw new Error('useRecentlyViewed must be used within a RecentlyViewedProvider');
   }
-  return context;
+  return ctx;
 };
-
-export default RecentlyViewedContext;
