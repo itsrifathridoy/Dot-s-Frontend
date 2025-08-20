@@ -125,7 +125,7 @@ const CategoryPage = () => {
         <nav className="flex items-center gap-2 text-sm text-gray-600 mb-6">
           <Link href="/" className="hover:text-[#7A1315]">Home</Link>
           <span>/</span>
-          <Link href="/products" className="hover:text-[#7A1315]">Products</Link>
+          <Link href="/categories" className="hover:text-[#7A1315]">Categories</Link>
           <span>/</span>
           <span className="text-gray-900 font-medium capitalize">{categoryName}</span>
           {selectedSubcategory !== 'all' && (
