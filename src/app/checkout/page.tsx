@@ -39,6 +39,19 @@ const CheckoutPage = () => {
   const [specialInstructions, setSpecialInstructions] = useState<string>('');
   const [isProcessing, setIsProcessing] = useState(false);
   const [orderSuccess, setOrderSuccess] = useState(false);
+  const [couponCode, setCouponCode] = useState<string>('');
+  const [appliedCoupon, setAppliedCoupon] = useState<any>(null);
+  const [couponError, setCouponError] = useState<string>('');
+  const [isApplyingCoupon, setIsApplyingCoupon] = useState(false);
+
+  // Available coupons (in real app, this would come from API)
+  const availableCoupons = [
+    { code: 'SAVE10', discount: 10, type: 'percentage', description: '10% off on orders above ৳2000', minAmount: 2000 },
+    { code: 'FLAT500', discount: 500, type: 'fixed', description: '৳500 off on orders above ৳5000', minAmount: 5000 },
+    { code: 'NEWUSER', discount: 15, type: 'percentage', description: '15% off for new users', minAmount: 1000 },
+    { code: 'FURNITURE20', discount: 20, type: 'percentage', description: '20% off on furniture', minAmount: 3000 },
+    { code: 'WELCOME', discount: 200, type: 'fixed', description: '৳200 off on first order', minAmount: 1500 }
+  ];
 
   // Mock saved addresses (in real app, this would come from API)
   const savedAddresses: Address[] = [
@@ -113,12 +126,54 @@ const CheckoutPage = () => {
     return option?.cost || 0;
   };
 
+  const calculateCouponDiscount = () => {
+    if (!appliedCoupon) return 0;
+    
+    const subtotal = calculateSubtotal();
+    if (appliedCoupon.type === 'percentage') {
+      return subtotal * (appliedCoupon.discount / 100);
+    }
+    return appliedCoupon.discount;
+  };
+
   const calculateTax = () => {
-    return calculateSubtotal() * 0.05; // 5% tax
+    const subtotalAfterDiscount = calculateSubtotal() - calculateCouponDiscount();
+    return subtotalAfterDiscount * 0.05; // 5% tax
   };
 
   const calculateTotal = () => {
-    return calculateSubtotal() + getDeliveryCost() + calculateTax();
+    return calculateSubtotal() + getDeliveryCost() + calculateTax() - calculateCouponDiscount();
+  };
+
+  const handleApplyCoupon = async () => {
+    setIsApplyingCoupon(true);
+    setCouponError('');
+    
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    const coupon = availableCoupons.find(c => c.code.toLowerCase() === couponCode.toLowerCase());
+    const subtotal = calculateSubtotal();
+    
+    if (!coupon) {
+      setCouponError('Invalid coupon code');
+    } else if (subtotal < coupon.minAmount) {
+      setCouponError(`Minimum order amount of ৳${coupon.minAmount} required for this coupon`);
+    } else if (appliedCoupon && appliedCoupon.code === coupon.code) {
+      setCouponError('This coupon is already applied');
+    } else {
+      setAppliedCoupon(coupon);
+      setCouponCode('');
+      setCouponError('');
+    }
+    
+    setIsApplyingCoupon(false);
+  };
+
+  const handleRemoveCoupon = () => {
+    setAppliedCoupon(null);
+    setCouponCode('');
+    setCouponError('');
   };
 
   const handleNextStep = () => {
@@ -414,6 +469,48 @@ const CheckoutPage = () => {
                   />
                 </div>
 
+                {/* Coupon Code */}
+                <div className="mb-8">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Apply Coupon</h3>
+                  <div className="flex items-center gap-4">
+                    <input
+                      type="text"
+                      value={couponCode}
+                      onChange={(e) => setCouponCode(e.target.value)}
+                      placeholder="Enter coupon code"
+                      className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#861718] focus:border-transparent"
+                    />
+                    <button
+                      onClick={handleApplyCoupon}
+                      disabled={isApplyingCoupon || !couponCode}
+                      className="bg-[#861718] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#A82B2B] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {isApplyingCoupon ? 'Applying...' : 'Apply'}
+                    </button>
+                  </div>
+                  {couponError && (
+                    <p className="text-sm text-red-500 mt-2">{couponError}</p>
+                  )}
+                  {appliedCoupon && (
+                    <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center justify-between">
+                      <div>
+                        <p className="text-sm text-green-800 font-medium">
+                          {appliedCoupon.description}
+                        </p>
+                        <p className="text-xs text-green-600">
+                          Code: {appliedCoupon.code}
+                        </p>
+                      </div>
+                      <button
+                        onClick={handleRemoveCoupon}
+                        className="text-red-500 text-sm hover:underline"
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  )}
+                </div>
+
                 <div className="flex justify-between">
                   <button
                     onClick={handlePrevStep}
@@ -545,6 +642,12 @@ const CheckoutPage = () => {
                   <span>Delivery</span>
                   <span>{getDeliveryCost() === 0 ? 'Free' : `৳${getDeliveryCost().toLocaleString()}`}</span>
                 </div>
+                {appliedCoupon && (
+                  <div className="flex justify-between text-gray-600">
+                    <span>Coupon Discount</span>
+                    <span>-৳{calculateCouponDiscount().toLocaleString()}</span>
+                  </div>
+                )}
                 <div className="flex justify-between text-gray-600">
                   <span>Tax (5%)</span>
                   <span>৳{calculateTax().toLocaleString()}</span>
