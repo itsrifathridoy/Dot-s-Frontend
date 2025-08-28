@@ -203,11 +203,11 @@ const CartItems: React.FC<CartProps> = ({ isOpen, onClose, onNavigate }) => {
                 
                 {/* Action Button */}
                 <Link
-                  href="/Cart"
+                  href="/checkout"
                   onClick={onClose}
                   className="w-full bg-gradient-to-r from-[#7A1315] to-[#a11618] text-white py-3 px-6 rounded-xl font-semibold hover:from-[#8b1719] hover:to-[#b01a1d] hover:shadow-lg transition-all duration-200 text-base flex items-center justify-center group"
                 >
-                  <span>Checkout</span>
+                  <span>Proceed to Checkout</span>
                   <ShoppingCart className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>

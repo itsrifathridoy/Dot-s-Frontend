@@ -284,12 +284,13 @@ const ShoppingCartPage: React.FC = () => {
             </div>
 
             {/* Checkout Button */}
-            <button
-              className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-4 rounded-lg transition-colors text-base disabled:opacity-50 disabled:cursor-not-allowed"
-              disabled={cartItems.length === 0}
+            <Link
+              href="/checkout"
+              className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-4 rounded-lg transition-colors text-base disabled:opacity-50 disabled:cursor-not-allowed block text-center"
+              style={cartItems.length === 0 ? { pointerEvents: 'none', opacity: 0.5 } : {}}
             >
               Proceed to Checkout
-            </button>
+            </Link>
 
             {/* Security Badge */}
             <div className="flex items-center justify-center mt-4 text-xs text-black">
