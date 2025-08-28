@@ -83,29 +83,29 @@ const ChangePasswordPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-20">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="min-h-screen bg-gray-50 pt-16 sm:pt-20">
+      <div className="max-w-4xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-8">
         {/* User Dropdown Header */}
-        <div className="mb-8">
+        <div className="mb-6 sm:mb-8">
           <UserDropdown activeSection="password" />
         </div>
         
         {/* Password Change Form */}
-        <div className="bg-white rounded-lg shadow-sm">
-          <div className="border-b border-gray-200 px-8 py-6">
-            <h1 className="text-2xl font-bold text-gray-900">Change Password</h1>
-            <p className="text-gray-600 mt-2">Update your password to keep your account secure</p>
+        <div className="bg-white rounded-xl shadow-sm">
+          <div className="border-b border-gray-200 px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
+            <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Change Password</h1>
+            <p className="text-gray-600 mt-2 text-sm sm:text-base">Update your password to keep your account secure</p>
           </div>
 
-          <div className="p-8">
+          <div className="p-4 sm:p-6 lg:p-8">
             {errors.length > 0 && (
               <motion.div
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6"
+                className="bg-red-50 border border-red-200 rounded-xl p-4 mb-6"
               >
                 <div className="flex items-start">
-                  <svg className="w-5 h-5 text-red-400 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-red-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   <div className="ml-3">
@@ -131,14 +131,14 @@ const ChangePasswordPage = () => {
                     type={showPasswords.current ? 'text' : 'password'}
                     value={formData.currentPassword}
                     onChange={(e) => setFormData({ ...formData, currentPassword: e.target.value })}
-                    className="w-full px-3 py-2 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#861718] focus:border-transparent"
+                    className="w-full px-3 py-3 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#861718] focus:border-transparent text-base"
                     placeholder="Enter your current password"
                     required
                   />
                   <button
                     type="button"
                     onClick={() => togglePasswordVisibility('current')}
-                    className="absolute inset-y-0 right-0 px-3 flex items-center text-gray-400 hover:text-gray-600"
+                    className="absolute inset-y-0 right-0 px-3 flex items-center text-gray-400 hover:text-gray-600 touch-manipulation"
                   >
                     {showPasswords.current ? (
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -164,14 +164,14 @@ const ChangePasswordPage = () => {
                     type={showPasswords.new ? 'text' : 'password'}
                     value={formData.newPassword}
                     onChange={(e) => setFormData({ ...formData, newPassword: e.target.value })}
-                    className="w-full px-3 py-2 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#861718] focus:border-transparent"
+                    className="w-full px-3 py-3 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#861718] focus:border-transparent text-base"
                     placeholder="Enter your new password"
                     required
                   />
                   <button
                     type="button"
                     onClick={() => togglePasswordVisibility('new')}
-                    className="absolute inset-y-0 right-0 px-3 flex items-center text-gray-400 hover:text-gray-600"
+                    className="absolute inset-y-0 right-0 px-3 flex items-center text-gray-400 hover:text-gray-600 touch-manipulation"
                   >
                     {showPasswords.new ? (
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -185,40 +185,40 @@ const ChangePasswordPage = () => {
                     )}
                   </button>
                 </div>
-                <div className="mt-2 text-sm text-gray-600">
-                  <p className="mb-1">Password must contain:</p>
-                  <ul className="space-y-1 text-xs">
-                    <li className={`flex items-center ${formData.newPassword.length >= 8 ? 'text-green-600' : 'text-gray-400'}`}>
-                      <span className="w-4 h-4 mr-2">
+                <div className="mt-3 p-4 bg-gray-50 rounded-xl border">
+                  <p className="text-sm text-gray-700 font-medium mb-3">Password must contain:</p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                    <div className={`flex items-center ${formData.newPassword.length >= 8 ? 'text-green-600' : 'text-gray-400'}`}>
+                      <span className="w-4 h-4 mr-2 text-center">
                         {formData.newPassword.length >= 8 ? '✓' : '○'}
                       </span>
                       At least 8 characters
-                    </li>
-                    <li className={`flex items-center ${/[A-Z]/.test(formData.newPassword) ? 'text-green-600' : 'text-gray-400'}`}>
-                      <span className="w-4 h-4 mr-2">
+                    </div>
+                    <div className={`flex items-center ${/[A-Z]/.test(formData.newPassword) ? 'text-green-600' : 'text-gray-400'}`}>
+                      <span className="w-4 h-4 mr-2 text-center">
                         {/[A-Z]/.test(formData.newPassword) ? '✓' : '○'}
                       </span>
                       One uppercase letter
-                    </li>
-                    <li className={`flex items-center ${/[a-z]/.test(formData.newPassword) ? 'text-green-600' : 'text-gray-400'}`}>
-                      <span className="w-4 h-4 mr-2">
+                    </div>
+                    <div className={`flex items-center ${/[a-z]/.test(formData.newPassword) ? 'text-green-600' : 'text-gray-400'}`}>
+                      <span className="w-4 h-4 mr-2 text-center">
                         {/[a-z]/.test(formData.newPassword) ? '✓' : '○'}
                       </span>
                       One lowercase letter
-                    </li>
-                    <li className={`flex items-center ${/[0-9]/.test(formData.newPassword) ? 'text-green-600' : 'text-gray-400'}`}>
-                      <span className="w-4 h-4 mr-2">
+                    </div>
+                    <div className={`flex items-center ${/[0-9]/.test(formData.newPassword) ? 'text-green-600' : 'text-gray-400'}`}>
+                      <span className="w-4 h-4 mr-2 text-center">
                         {/[0-9]/.test(formData.newPassword) ? '✓' : '○'}
                       </span>
                       One number
-                    </li>
-                    <li className={`flex items-center ${/[!@#$%^&*]/.test(formData.newPassword) ? 'text-green-600' : 'text-gray-400'}`}>
-                      <span className="w-4 h-4 mr-2">
+                    </div>
+                    <div className={`flex items-center sm:col-span-2 ${/[!@#$%^&*]/.test(formData.newPassword) ? 'text-green-600' : 'text-gray-400'}`}>
+                      <span className="w-4 h-4 mr-2 text-center">
                         {/[!@#$%^&*]/.test(formData.newPassword) ? '✓' : '○'}
                       </span>
                       One special character (!@#$%^&*)
-                    </li>
-                  </ul>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -232,14 +232,14 @@ const ChangePasswordPage = () => {
                     type={showPasswords.confirm ? 'text' : 'password'}
                     value={formData.confirmPassword}
                     onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
-                    className="w-full px-3 py-2 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#861718] focus:border-transparent"
+                    className="w-full px-3 py-3 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#861718] focus:border-transparent text-base"
                     placeholder="Confirm your new password"
                     required
                   />
                   <button
                     type="button"
                     onClick={() => togglePasswordVisibility('confirm')}
-                    className="absolute inset-y-0 right-0 px-3 flex items-center text-gray-400 hover:text-gray-600"
+                    className="absolute inset-y-0 right-0 px-3 flex items-center text-gray-400 hover:text-gray-600 touch-manipulation"
                   >
                     {showPasswords.confirm ? (
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -254,11 +254,16 @@ const ChangePasswordPage = () => {
                   </button>
                 </div>
                 {formData.confirmPassword && formData.newPassword !== formData.confirmPassword && (
-                  <p className="mt-1 text-sm text-red-600">Passwords do not match</p>
+                  <p className="mt-2 text-sm text-red-600 flex items-center">
+                    <svg className="w-4 h-4 mr-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                    Passwords do not match
+                  </p>
                 )}
                 {formData.confirmPassword && formData.newPassword === formData.confirmPassword && formData.confirmPassword.length > 0 && (
-                  <p className="mt-1 text-sm text-green-600 flex items-center">
-                    <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <p className="mt-2 text-sm text-green-600 flex items-center">
+                    <svg className="w-4 h-4 mr-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                     Passwords match
@@ -267,11 +272,11 @@ const ChangePasswordPage = () => {
               </div>
 
               {/* Submit Button */}
-              <div className="pt-4">
+              <div className="pt-4 border-t border-gray-100">
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full px-6 py-3 bg-[#861718] text-white rounded-lg hover:bg-[#A82B2B] disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium"
+                  className="w-full px-6 py-4 bg-[#861718] text-white rounded-xl hover:bg-[#A82B2B] disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium text-base touch-manipulation"
                 >
                   {isSubmitting ? (
                     <div className="flex items-center justify-center">
@@ -286,6 +291,22 @@ const ChangePasswordPage = () => {
                 </button>
               </div>
             </form>
+
+            {/* Security Tips */}
+            <div className="mt-8 p-4 bg-blue-50 rounded-xl border border-blue-200">
+              <h4 className="text-sm font-medium text-blue-800 mb-2 flex items-center">
+                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+                Security Tips
+              </h4>
+              <ul className="text-sm text-blue-700 space-y-1">
+                <li>• Use a unique password for this account</li>
+                <li>• Don't share your password with anyone</li>
+                <li>• Consider using a password manager</li>
+                <li>• Change your password regularly</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

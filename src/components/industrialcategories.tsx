@@ -11,12 +11,12 @@ interface Category {
 }
 
 const categories: Category[] = [
-  { name: 'Office', image: '/images/living room.jpg', rowSpan: 'md:row-span-3', path: '/living-room' },
-  { name: 'Academic', image: '/images/kitchen.png', path: '/kitchen' },
-  { name: 'Hall Room', image: '/images/HallRoom.jpeg', path: '/bed-room' },
-  { name: 'Hospital', image: '/images/kitchen.png', rowSpan: 'md:row-span-2', path: '/dining-room' },
-  { name: 'Hotel & Resrurent', image: '/images/Kitchen.png', rowSpan: 'md:row-span-2', colSpan: 'md:col-span-2', path: '/study-room' },
-  { name: 'Community Center', image: '/images/balcony.jpg', path: '/balcony' },
+  { name: 'Office', image: '/images/living room.jpg', rowSpan: 'md:row-span-3', path: '/collectionspage/office' },
+  { name: 'Academic', image: '/images/kitchen.png', path: '/collectionspage/academic' },
+  { name: 'Hall Room', image: '/images/HallRoom.jpeg', path: '/collectionspage/hallroom' },
+  { name: 'Hospital', image: '/images/kitchen.png', rowSpan: 'md:row-span-2', path: '/collectionspage/hospital' },
+  { name: 'Hotel & Resrurent', image: '/images/Kitchen.png', rowSpan: 'md:row-span-2', colSpan: 'md:col-span-2', path: '/collectionspage/hotel' },
+  { name: 'Community Center', image: '/images/balcony.jpg', path: '/collectionspage/community' },
 ];
 
 const IndustrialCatagories: React.FC = () => {

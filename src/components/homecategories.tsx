@@ -11,14 +11,14 @@ interface Category {
 }
 
 const categories: Category[] = [
-  { name: 'Living Room', image: '/Images/Living room.jpg', rowSpan: 'md:row-span-2', path: '/living-room' },
-  { name: 'Kitchen', image: '/Images/Kitchen.png', colSpan: 'md:col-span-2', path: '/kitchen' },
-  { name: 'Bed Room', image: '/BedroomFinal.jpeg', rowSpan: 'md:row-span-2', path: '/bed-room' },
-  { name: 'Dining Room', image: '/Images/balcony.jpg', rowSpan: 'md:row-span-2', colSpan: 'md:col-span-2', path: '/dining-room' },
-  { name: 'Study Room', image: '/Images/balcony.jpg', rowSpan: 'md:row-span-2', path: '/study-room' },
-  { name: 'Balcony', image: '/Images/balcony.jpg', path: '/balcony' },
-  { name: 'Kids Room', image: '/Images/balcony.jpg', path: '/kids-room' },
-  { name: 'Drawing', image: '/Images/balcony.jpg', colSpan: 'md:col-span-2', path: '/garden' },
+  { name: 'Living Room', image: '/Images/Living room.jpg', rowSpan: 'md:row-span-2', path: '/collectionspage/living' },
+  { name: 'Kitchen', image: '/Images/Kitchen.png', colSpan: 'md:col-span-2', path: '/collectionspage/kitchen' },
+  { name: 'Bed Room', image: '/BedroomFinal.jpeg', rowSpan: 'md:row-span-2', path: '/collectionspage/bedroom' },
+  { name: 'Dining Room', image: '/Images/balcony.jpg', rowSpan: 'md:row-span-2', colSpan: 'md:col-span-2', path: '/collectionspage/dining' },
+  { name: 'Study Room', image: '/Images/balcony.jpg', rowSpan: 'md:row-span-2', path: '/collectionspage/study' },
+  { name: 'Balcony', image: '/Images/balcony.jpg', path: '/collectionspage/balcony' },
+  { name: 'Kids Room', image: '/Images/balcony.jpg', path: '/collectionspage/kids' },
+  { name: 'Drawing', image: '/Images/balcony.jpg', colSpan: 'md:col-span-2', path: '/collectionspage/drawing' },
 ];
 
 const HomeCategories: React.FC = () => {
